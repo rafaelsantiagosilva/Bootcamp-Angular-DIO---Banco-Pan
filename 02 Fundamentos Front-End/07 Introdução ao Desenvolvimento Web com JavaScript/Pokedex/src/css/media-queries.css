@@ -1,0 +1,26 @@
+@charset "UTF-8";
+@media screen and (min-width: 992px) {
+	.content {
+		max-width: 992px;
+		height: auto;
+		display: block;
+		margin: 1rem auto;
+		border-radius: 1em;
+	}
+
+	.pokemon {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+}
+
+@media screen and (min-width: 576px) {
+	.content {
+		max-width: 576px;
+		display: block;
+		margin: 0 auto;
+	}
+
+	.pokemon {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
