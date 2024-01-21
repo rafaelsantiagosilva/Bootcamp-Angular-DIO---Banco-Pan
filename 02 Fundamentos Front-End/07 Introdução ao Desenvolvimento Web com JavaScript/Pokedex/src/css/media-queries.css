@@ -8,7 +8,7 @@
 		border-radius: 1em;
 	}
 
-	.pokemon {
+	.pokemon-list {
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}
 }
@@ -20,7 +20,7 @@
 		margin: 0 auto;
 	}
 
-	.pokemon {
+	.pokemon-list {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 }

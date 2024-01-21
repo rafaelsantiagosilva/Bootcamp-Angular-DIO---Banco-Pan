@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-ol.pokemon {
+ol.pokemon-list {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	list-style: none;
@@ -8,7 +8,7 @@ ol.pokemon {
 	margin: 0;
 }
 
-ol.pokemon > li {
+ol.pokemon-list > li {
 	margin: 0.5em;
 	padding: 1em;
 	border-radius: 1rem;
@@ -25,7 +25,7 @@ ol.pokemon > li {
 	background-color: #ff6265;
 }
 
-img {
+img.pokemon-image {
 	max-width: 100%;
 	height: 70px;
 }
