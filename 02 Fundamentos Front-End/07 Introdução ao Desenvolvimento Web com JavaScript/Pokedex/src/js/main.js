@@ -1,11 +1,47 @@
-"use strict";
+const pokemonList = document.getElementById('pokemonList')
+const loadMoreButton = document.getElementById('loadMoreButton')
 
-// const OFFSET = 0;
-// const LIMIT = 151;
-let pokemonId = 1;
-const POKEAPI_URL = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`;
+const maxRecords = 151
+const limit = 10
+let offset = 0;
 
-fetch(POKEAPI_URL) // Por padrão, usa o GET
-     .then((response) => response.json())
-     .then((response) => console.log(response)) // Recebe o return do then anterior
-     .catch((error) => console.log(error));
+function convertPokemonToLi(pokemon) {
+     return `
+        <li class="pokemon ${pokemon.type}">
+            <span class="number">#${pokemon.number}</span>
+            <span class="name">${pokemon.name}</span>
+
+            <div class="detail">
+                <ol class="types">
+                    ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+                </ol>
+
+                <img src="${pokemon.photo}"
+                     alt="${pokemon.name}">
+            </div>
+        </li>
+    `
+}
+
+function loadPokemonItens(offset, limit) {
+     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+          const newHtml = pokemons.map(convertPokemonToLi).join('')
+          pokemonList.innerHTML += newHtml
+     })
+}
+
+loadPokemonItens(offset, limit)
+
+loadMoreButton.addEventListener('click', () => {
+     offset += limit
+     const qtdRecordsWithNexPage = offset + limit
+
+     if (qtdRecordsWithNexPage >= maxRecords) {
+          const newLimit = maxRecords - offset
+          loadPokemonItens(offset, newLimit)
+
+          loadMoreButton.parentElement.removeChild(loadMoreButton)
+     } else {
+          loadPokemonItens(offset, limit)
+     }
+})
